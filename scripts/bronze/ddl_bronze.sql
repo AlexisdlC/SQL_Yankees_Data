@@ -1,3 +1,14 @@
+/*
+============================================================================
+DDL Script: Create Bronze Tables
+============================================================================
+Script Purpose:
+  This script create tables in the "Bronze" schema, dropping existing tables
+if they already exist.
+Run this script to redefine the DDL structure of 'Bronze' Tables
+============================================================================
+*/
+
 IF OBJECT_ID('bronze.games_1950_2025_filtered', 'U') IS NOT NULL
 	DROP TABLE bronze.games_1950_2025_filtered;
 
