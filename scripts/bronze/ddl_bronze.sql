@@ -14,10 +14,10 @@ IF OBJECT_ID('bronze.games_1950_2025_filtered', 'U') IS NOT NULL
 
 CREATE TABLE bronze.games_1950_2025_filtered (
 	game_id					INT,
-	game_datetime			DATETIME,
+	game_datetime			NVARCHAR(50),
 	game_date				DATE,
 	game_type				NVARCHAR(50),
-	status					NVARCHAR(50),
+	game_status				NVARCHAR(50),
 	away_name				NVARCHAR(50),
 	home_name				NVARCHAR(50),
 	away_id					INT,
@@ -26,22 +26,18 @@ CREATE TABLE bronze.games_1950_2025_filtered (
 	game_num				INT,
 	home_probable_pitcher	NVARCHAR(50),
 	away_probable_pitcher	NVARCHAR(50),
-	home_pitcher_note		NVARCHAR(500),
-	away_pitcher_note		NVARCHAR(500),
-	away_score				INT,
+	away_score				NVARCHAR(50),
 	home_score				INT,
 	current_inning			INT,
 	inning_state			NVARCHAR(50),
 	venue_id				INT,
 	venue_name				NVARCHAR(50),
-	national_broadcasts		NVARCHAR(50),
 	series_status			NVARCHAR(50),
 	winning_team			NVARCHAR(50),
 	losing_team				NVARCHAR(50),
 	winning_pitcher			NVARCHAR(50),
 	losing_pitcher			NVARCHAR(50),
-	save_pitcher			NVARCHAR(50),
-	summary					NVARCHAR(100)
+	save_pitcher			NVARCHAR(50)
 );
 
 IF OBJECT_ID('bronze.batters', 'U') IS NOT NULL
