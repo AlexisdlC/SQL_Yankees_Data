@@ -106,7 +106,7 @@ IF OBJECT_ID('bronze.full_game_analysis_pitch_complete', 'U') IS NOT NULL
 
 CREATE TABLE bronze.full_game_analysis_pitch_complete (
 	personId		INT,
-	ip				INT,
+	ip				NVARCHAR(50),
 	h				INT,
 	r				INT,
 	er				INT,
