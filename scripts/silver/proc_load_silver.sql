@@ -1,24 +1,3 @@
-/*
-==================================================================================
-Stored Procedure: Load Silver Layer (Bronze -> Silver)
-==================================================================================
-Script Purpose:
-  This stored procedure performs the ETL (Extract, Transform Load) process
-  to populate the `Silver` schema tables from the 'Bronze' schema.
-  It perfoms the following actions:
-    - Truncates the silver tables before loading data.
-    - Inserts transformed and cleansed data from bronze into silver tables.
-
-Parameters: 
-  None.
-  This stored procedure does not accept any parameters or return any values.
-
-Usage Example:
-  EXEC silver.load_silver;
-==================================================================================
-*/
-
-
 CREATE OR ALTER PROCEDURE silver.load_silver AS
 
 BEGIN
@@ -105,9 +84,18 @@ BEGIN
 		venue_name,
 		-- Creating column to determine if the game is a win, loss or tie for the Yankees
 		CASE
-			WHEN winning_team = 'New York Yankees' THEN 'Win'
-			WHEN winning_team IS NULL THEN 'Tie'
-			ELSE 'Loss'
+			WHEN home_id = 147 THEN
+				CASE
+					WHEN home_score > away_score THEN 'Win'
+					WHEN home_score < away_score THEN 'Loss'
+					ELSE 'Tie'
+				END
+			ELSE 
+				CASE
+					WHEN home_score < away_score THEN 'Win'
+					WHEN home_score > away_score THEN 'Loss'
+					ELSE 'Tie'
+				END
 		END AS game_result,
 		winning_pitcher,
 		losing_pitcher,
@@ -122,7 +110,13 @@ BEGIN
 		FROM bronze.games_1950_2025_filtered
 		WHERE game_id IS NOT NULL
 	)t
-	WHERE flag_last = 1;
+	WHERE flag_last = 1
+	AND EXISTS (
+	-- Remove games with no batting data meaning they actually were not played
+		SELECT 1
+		FROM silver.full_game_analysis_batting_complete AS b
+		WHERE t.game_id = b.game_id
+	);
 
 	SET @end_time = GETDATE();
 	PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
