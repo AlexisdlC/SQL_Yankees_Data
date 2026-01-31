@@ -4,6 +4,8 @@
 
 🐍 The data is available in the ['source_data'](source_data/) folder and was obtained, gathered and pre-filtered separately using python and the [MLB-statsapi](https://github.com/toddrob99/MLB-StatsAPI/tree/master) package.
 
+🗽 One important note: the data shown is for New York Yankees games only, so when looking at specific individual players, the totals shown are not their career total or averages, but it is limited to only the games they played with the Yankees (except of course if they spent their whole career with the Yankees)
+
 # Background
 
 🏟️ Passionate about data and about the Yankees, I wanted to take the opportunity to join my two passions and use baseball statistics to practice and train my skills in building a proper data pipeline.
@@ -14,6 +16,14 @@
 * Build interactive dashboards to explore different aspects of the data 📉
 * Share my work with others, using as much French as possible in the dashboard, as my main target audience is baseball fans from France 🇫🇷
 * Develop my skills in data analytics tools and build best practice habits
+
+### Who Am I?
+
+My name is **Alexis** and I am a Physics PhD with a passion for Data and Baseball. I am also on Twitter behind the account @PinstripesFr, where I provide news, updates, visuals and analysis about the New York Yankees in French. Don't hesitate to contact me if you have questions, ideas or suggestions!
+
+[![text](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexisdlc/)
+[![text](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/PinstripesFr)
+
 
 # Tools I Used
 
@@ -48,5 +58,43 @@ The dashboards were built by connecting and loading the **_Gold Layer_** to **Po
 The **Power BI** file is provided in the repository, and contains several pages.
 
 ## Statistiques Globales
+![Screenshot of the Dashboard Page, "Statistiques Globales"](/assets/StatistiquesGlobales.PNG)
 
+This page of the dashboard presents global statistics about the Yankees' team record. In the center of the page are two slicers that can be used to filter the data:
 
+* A *Date Slicer*, going year by year between 1950 and 2025, to filter the range of the data that is presented in the whole page
+* A *Game Type Slicer*, with five options (Regular, Wild Card, ALDS, ALCS, World Series), to filter the data based on the stage of the season the games were played
+
+The top row of the page shows the global Win/Loss record of the Yankees for the selected time period and type of games:
+* A donut chart shows the global Win and Loss percentages
+* A stacked column chart shows the same record, but broken up by season, with a horizontal line indicating the 50% Win mark
+
+Below this, there is a stacked bar chart decomposing the Win/Loss record by opponent. This graph can be interesting to interact with, as clicking on a team name will further filter the data of the page to show the global record and season by season record for the selected team. It also filters the two tables next to it, where basic batting and pitching stats are presented.
+
+## Statistiques Leaders - Régulière / Playoffs
+![Screenshot of the Dashboard Page, "Statistiques Leaders Regulière"](/assets/StatistiquesLeadersRegulière.PNG)
+
+This page of the dashboard presents detailed statistical analysis, for the team, batters and pitchers, limited to regular season games only, and as indicated on the page, showing only batters with a minimum of 400 at bats and pitchers with at least 50 innings pitched.
+
+The page is divided in two halves, one for batting stats, and the second one for pitching stats. There is one *Date Slicer*, going year by year between 1950 and 2025, to filter the range of the data that is presented in the whole page.
+
+The left side presents batting data, with a slicer allowing to select a statistic that will be presented in the two graphs below:
+* A bar chart, showing the individual leaders in the selected statistic.
+* A line chart, showing the team season by season trend of the selected statistic.
+
+The right side is similar to the left side, but for pitching stats. Note, the ordering of the bar chart can/should be reversed when certain statistics are selected. This can be done using the "..." icon on top of the graph ('More Options') and the "Sort Axis" sub-menu.
+
+![Screenshot of the Dashboard Page, "Statistiques Leaders Playoffs"](/assets/StatistiquesLeadersPlayoffs.PNG)
+
+The next page has the exact same structure and slicers, but it is filtered to present only data for all postseason games. The minimum at bats and innings pitched have also been lowered to 20 and 10 respectively.
+
+## Comparaison Joueurs - Frappeurs / Lanceurs
+![Screenshot of the Dashboard Page, "Comparaison Joueurs Frappeurs"](/assets/ComparaisonJoueursFrappeurs.PNG)
+
+This pages allows users to compare the batting stats of two players. Both players can be selected from dropdown slicers (with a search bar available) and the table below each slicer will update with common batting stats for the player. 
+
+On the left side of the page, a slicer is available to select a batting statistic, and the two line charts will update to show the season by season trend of the selected statistic for each player.
+
+![Screenshot of the Dashboard Page, "Comparaison Joueurs Lanceurs"](/assets/ComparaisonJoueursLanceurs.PNG)
+
+This pages is the same as the previous one, but for pitching stats.
