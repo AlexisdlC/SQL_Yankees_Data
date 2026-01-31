@@ -95,6 +95,6 @@ This pages allows users to compare the batting stats of two players. Both player
 
 On the left side of the page, a slicer is available to select a batting statistic, and the two line charts will update to show the season by season trend of the selected statistic for each player.
 
-![Screenshot of the Dashboard Page, "Comparaison Joueurs Lanceurs"](/assets/ComparaisonJoueursLanceurs.PNG)
+![Screenshot of the Dashboard Page, "Comparaison Joueurs Lanceurs"](/assets/ComparaisonJoueursLanceursv2.PNG)
 
 This pages is the same as the previous one, but for pitching stats.
