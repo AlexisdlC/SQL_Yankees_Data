@@ -25,7 +25,7 @@ To develop this project, I used three main tools:
 
 # Data Warehouse Structure
 
-The Data Warehouse built in SQL was built in the "medaillon structure".
+The Data Warehouse was built in SQL using *SQL Server*, and in the *"Medaillon Structure"*.
 
 ## Bronze Layer
 
@@ -39,6 +39,14 @@ The **_Silver Layer_** is used to store clean, processed and transformed data. T
 
 The **_Gold Layer_** is the final layer of the Data Warehouse, with ready to use data for reporting and analytics. The data is stored in Views, with a Star Schema Model.
 
-
+![Architecture of the model of the Gold Layer](/assets/DataModel.png)
 
 # Dashboards
+
+The dashboards were built by connecting and loading the **_Gold Layer_** to **Power BI**. Power Query was used to transform some of the data (translating some terms to French for example) and DAX was used as well to build Measures allowing for a responsive experience.
+
+The **Power BI** file is provided in the repository, and contains several pages.
+
+## Statistiques Globales
+
+
